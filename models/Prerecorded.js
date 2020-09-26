@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const classSchema = new Schema({
   type: {
     type: String,
-    enum: ['C', 'D', 'M'],
+    enum: ['C', 'D', 'M', 'P'],
     required: true
   },
   name: {

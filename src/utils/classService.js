@@ -6,9 +6,9 @@ const BASE_SETUP = {
   })
 }
 
-const autoComplete = async () => {
+const getAll = async () => {
   try {
-    let res = await fetch(BASE_URL + 'autocomplete', BASE_SETUP)
+    let res = await fetch(BASE_URL, BASE_SETUP)
     return await res.json();
   } catch (err) {
     return [];
@@ -25,6 +25,6 @@ const getOne = async id => {
 }
 
 module.exports = {
-  autoComplete,
+  getAll,
   getOne
 }

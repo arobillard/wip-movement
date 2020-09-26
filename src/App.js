@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import './styles/App.css';
 
 import NavBar from './components/Navbar';
 
@@ -11,11 +12,11 @@ export default function App() {
     <BrowserRouter>
       <header>
         <NavBar />
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/classes/:id' component={Class} />
-        </Switch>
       </header>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route path='/classes/:id' component={Class} />
+      </Switch>
     </BrowserRouter>
   )
 }

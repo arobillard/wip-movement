@@ -21,7 +21,7 @@ function NavBar() {
       <h2 onClick={() => history.push('/')}>Works in Progress</h2>
       <div className="categories-wrapper"></div>
       <div className="search-container">
-        <SearchBar list={classService.autoComplete} />
+        <SearchBar list={classService.getAll} />
       </div>
       { rightSide}
     </nav >

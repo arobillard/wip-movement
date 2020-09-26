@@ -1,15 +1,15 @@
 header {
-    width: 100%;
+    width: 100vw;
     height: 7vh;
 }
 nav {
     display: flex;
     height: 100%;
-    background-color: #ECC385;
+    background-color: var(--tan);
 }
 
 nav h2 {
-    color: white;
+    color: var(--white);
 }
 
 nav h2,

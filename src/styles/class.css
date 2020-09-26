@@ -1,0 +1,14 @@
+h1 {
+    text-align: center;
+}
+
+video {
+    width: 60%;
+}
+
+@media only screen and (min-width: 678px) {
+    video {
+        width: 60%;
+        max-width: 900px;
+    }
+}

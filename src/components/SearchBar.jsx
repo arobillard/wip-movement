@@ -43,9 +43,9 @@ export default function SearchBar({ list }) {
   return (
     <div ref={wrapperRef} className="search-wrapper">
       <input type="text" value={search} onClick={() => setShowing(!showing)} onChange={e => setSearch(e.target.value)} />
-      <i class="fas fa-search"></i>
+      <i className="fas fa-search"></i>
       {showing && <ul className='auto-options'>
-        {options.filter(option => option.name.toLowerCase().match(search.toLowerCase())).slice(0, 10).map(option => <li onClick={() => clickOption(option.id)}>{option.name}</li>)}
+        {options.filter(option => option.name.toLowerCase().match(search.toLowerCase())).slice(0, 10).map(option => <li onClick={() => clickOption(option._id)}>{option.name}</li>)}
       </ul>}
     </div>
   )

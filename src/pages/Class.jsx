@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import classService from '../utils/classService';
+import '../styles/class.css';
 
 export default function Class() {
 
@@ -22,7 +23,8 @@ export default function Class() {
 
   return (
     <main>
-      {thisClass.name}
+      <h1>{thisClass.name}</h1>
+      <video src={thisClass.video} controls />
     </main>
   )
 }
