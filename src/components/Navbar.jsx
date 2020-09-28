@@ -4,21 +4,39 @@ import '../styles/navbar.css';
 
 import SearchBar from './SearchBar';
 import classService from '../utils/classService';
+import userService from '../utils/userService';
 
-function NavBar() {
+function NavBar({ user, handleLogin }) {
 
   const history = useHistory();
 
-  const rightSide = (
-    <div className="right-side">
-      <button>Login</button>
-      <button>Sign Up</button>
-    </div>
-  )
+  const redirect = (e, where) => {
+    e.preventDefault();
+    history.push('/' + where);
+  }
+
+  const signout = e => {
+    e.preventDefault();
+    userService.logout();
+    handleLogin();
+    history.push('/')
+  }
+
+  const rightSide = user ? (
+    <>
+      {user.username}
+      <button onClick={signout}>Log Out</button>
+    </>
+  ) : (
+      <div className="right-side">
+        <button onClick={e => redirect(e, 'login')}>Login</button>
+        <button onClick={e => redirect(e, 'signup')}>Sign Up</button>
+      </div>
+    )
 
   return (
     <nav>
-      <h2 onClick={() => history.push('/')}>Works in Progress</h2>
+      <h2 onClick={e => redirect(e, '')}>Works in Progress</h2>
       <div className="categories-wrapper"></div>
       <div className="search-container">
         <SearchBar list={classService.getAll} />

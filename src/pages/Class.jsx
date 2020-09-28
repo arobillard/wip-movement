@@ -7,6 +7,7 @@ export default function Class() {
 
   const { id } = useParams();
 
+  const [loading, setLoading] = useState(true);
   const [thisClass, setThisClass] = useState({});
 
   useEffect(() => {
@@ -19,12 +20,17 @@ export default function Class() {
       }
     }
     fetchData();
+    setLoading(false);
   }, [id])
 
-  return (
-    <main>
-      <h1>{thisClass.name}</h1>
-      <video src={thisClass.video} controls />
+  return loading ? (
+    <main className="main-class">
+      LOADING...
     </main>
-  )
+  ) : (
+      <main className="main-class">
+        <h1>{thisClass.name}</h1>
+        <video src={thisClass.video} controls />
+      </main>
+    )
 }

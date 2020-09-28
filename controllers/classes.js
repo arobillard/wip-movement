@@ -21,6 +21,17 @@ const getOne = async (req, res) => {
   }
 }
 
+const getSearch = async (req, res) => {
+  try {
+    console.log(req.params.search)
+    let resp = await Prerecorded.find({ name: { $regex: `${req.params.search}`, $options: 'i' } });
+    console.log(resp);
+    res.json({ classes: resp })
+  } catch (err) {
+    res.status(500).json({ classed: [], err: 'Couldn\'t find any classes..' })
+  }
+}
+
 const addOne = async (req, res) => {
   try {
     let newClass = new Prerecorded(req.body);
@@ -34,6 +45,7 @@ const addOne = async (req, res) => {
 module.exports = {
   getAll,
   getOne,
-  addOne
+  getSearch,
+  addOne,
 }
 

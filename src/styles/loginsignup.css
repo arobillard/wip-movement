@@ -1,0 +1,23 @@
+.main-signup form,
+.mainlogin form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.main-signup label,
+.main-login label {
+    width: 100%;
+    text-align: left;
+}
+
+.main-signup input,
+.main-login input {
+    width: 100%;
+}
+.member {
+    display: flex;
+}

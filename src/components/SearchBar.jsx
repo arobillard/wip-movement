@@ -4,24 +4,33 @@ import '../styles/searchbar.css';
 
 export default function SearchBar({ list }) {
 
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState({ name: '', id: '' });
   const [showing, setShowing] = useState(false);
   const [options, setOptions] = useState([]);
 
   const wrapperRef = useRef(null);
+  const inputRef = useRef(null);
 
   let history = useHistory();
 
-  const clickOption = id => {
+  const clickOption = obj => {
     setShowing(false);
-    setSearch('');
-    history.push(`/classes/${id}`);
+    setSearch({ name: obj.name, id: obj._id });
+    inputRef.current.focus();
   }
 
   const outsideClick = e => {
     const { current: wrap } = wrapperRef;
     if (wrap && !wrap.contains(e.target)) {
       setShowing(false);
+    }
+  }
+
+  const submitSearch = () => {
+    if (search.id) {
+      history.push(`/classes/${search.id}`);
+    } else {
+      history.push(`/search/${search.name}`)
     }
   }
 
@@ -42,10 +51,12 @@ export default function SearchBar({ list }) {
 
   return (
     <div ref={wrapperRef} className="search-wrapper">
-      <input type="text" value={search} onClick={() => setShowing(!showing)} onChange={e => setSearch(e.target.value)} />
+      <form onSubmit={submitSearch} >
+        <input ref={inputRef} type="text" value={search.name} onClick={() => setShowing(!showing)} onChange={e => setSearch({ name: e.target.value })} />
+      </form>
       <i className="fas fa-search"></i>
       {showing && <ul className='auto-options'>
-        {options.filter(option => option.name.toLowerCase().match(search.toLowerCase())).slice(0, 10).map(option => <li onClick={() => clickOption(option._id)}>{option.name}</li>)}
+        {options.filter(option => option.name.toLowerCase().match(search.name.toLowerCase())).slice(0, 10).map(option => <li onClick={() => clickOption(option)}>{option.name}</li>)}
       </ul>}
     </div>
   )
