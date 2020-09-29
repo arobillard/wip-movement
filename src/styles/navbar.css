@@ -1,12 +1,13 @@
 header {
     width: 100vw;
-    height: 7vh;
+    position: relative;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.5);
 }
 nav {
     display: flex;
     align-items: center;
     padding: 0 30px;
-    height: 100%;
+    height: 7vh;
     background-color: var(--tan);
 }
 
@@ -28,6 +29,16 @@ nav .right-side {
     align-items: center;
 }
 
+nav span {
+    color: #333;
+    font-size: 1.8em;
+    margin-right: 30px;
+}
+
+nav p {
+    font-size: 1.8em;
+}
+
 /* ==================================================================================================
                 MEDIA QUERIES
    ================================================================================================== */
@@ -37,9 +48,32 @@ nav .right-side {
         nav .categories-wrapper,
         nav .right-side {
             display: block;
-        }
-
-        nav h2:hover {
             cursor: pointer;
         }
+
+        nav .right-side {
+            display: flex;
+            width: 200px;
+            height: 70%;
+            align-items: center;
+        }
+
+        nav .right-side button {
+            height: 100%;
+            width: 50%;
+            border: none;
+            background-color: var(--dark-blue);
+            border-radius: 2px;;
+            color: var(--white);
+            font-size: 1.3em;
+        }
+
+        nav .right-side button:first-child {
+            background-color: var(--tan);
+            color: #444;
+            height: 60%;
+            text-align: right;
+            padding-right: 10px;
+        }
+
    }

@@ -13,6 +13,7 @@ export default function Search() {
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log(search)
       try {
         const data = await classService.getSearch(search);
         console.log(data);

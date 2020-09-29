@@ -29,7 +29,8 @@ const classSchema = new Schema({
     type: Number,
     default: 1
   },
-  tags: [String]
+  tags: [String],
+  featured: { type: Boolean, default: false }
 }, {
   timestamps: true
 })

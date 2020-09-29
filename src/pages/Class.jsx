@@ -16,7 +16,7 @@ export default function Class() {
         let res = await classService.getOne(id);
         setThisClass(res.class);
       } catch (err) {
-        alert('woops!');
+        alert(err.message);
       }
     }
     fetchData();

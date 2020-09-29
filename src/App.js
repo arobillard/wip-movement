@@ -15,6 +15,8 @@ import Search from './pages/Search';
 export default function App() {
 
   const [user, setUser] = useState({});
+  const [bannerShowing, setBannerShowing] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const handleLogin = () => {
     setUser(userService.getUser());
@@ -22,10 +24,20 @@ export default function App() {
 
   useEffect(() => {
     setUser(userService.getUser());
+    setLoading(false);
+    setBannerShowing(true);
   }, [])
   return (
     <BrowserRouter>
       <header>
+        {!loading && bannerShowing &&
+          <div className={`banner ${bannerShowing ? 'banner-showing' : ''}`}>
+            <div className="main-banner">
+              <h2>This is a test banner. Enroll in a Live Class Today!</h2>
+            </div>
+            <p onClick={() => setBannerShowing(false)}>X</p>
+          </div>
+        }
         <NavBar user={user} handleLogin={handleLogin} />
       </header>
       <Switch>
@@ -35,6 +47,7 @@ export default function App() {
 
         <Route path='/login' render={({ history }) => <Login history={history} handleLogin={handleLogin} />} />
         <Route path='/signup' render={({ history }) => <Signup history={history} handleLogin={handleLogin} />} />
+        <Route path='/*' render={() => <main className="not-found">404 Page not Found</main>} />
       </Switch>
     </BrowserRouter>
   )

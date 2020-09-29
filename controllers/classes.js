@@ -23,12 +23,41 @@ const getOne = async (req, res) => {
 
 const getSearch = async (req, res) => {
   try {
-    console.log(req.params.search)
-    let resp = await Prerecorded.find({ name: { $regex: `${req.params.search}`, $options: 'i' } });
-    console.log(resp);
+    let query = req.params.search;
+    console.log(query);
+    let resp = await Prerecorded.find({ $or: [{ name: { $regex: `${query}`, $options: 'i' } }, { tags: { $elemMatch: { $regex: `${query}`, $options: 'i' } } }] });
     res.json({ classes: resp })
   } catch (err) {
     res.status(500).json({ classed: [], err: 'Couldn\'t find any classes..' })
+  }
+}
+
+const getFeatured = async (req, res) => {
+  try {
+    let resp = await Prerecorded.findOne({ featured: true });
+    if (!resp) return res.status(500).json({ featured: [], err: 'No Featured Class Found..' })
+    res.json({ featured: resp })
+  } catch (err) {
+    res.status(500).json({ featured: [], err: err.message })
+  }
+}
+
+const getRandom = async (req, res) => {
+  try {
+    let resp = await Prerecorded.find({});
+    let classes = [];
+    let used = [];
+    for (let i = 0; i < 4; i++) {
+      let ind = Math.floor(Math.random() * resp.length);
+      while (used.includes(ind)) {
+        ind = Math.floor(Math.random() * resp.length);
+      }
+      used.push(ind);
+      classes.push(resp[ind]);
+    }
+    res.json({ classes })
+  } catch (err) {
+    res.status(500).json({ classes: [], err: err.message })
   }
 }
 
@@ -46,6 +75,8 @@ module.exports = {
   getAll,
   getOne,
   getSearch,
+  getFeatured,
+  getRandom,
   addOne,
 }
 

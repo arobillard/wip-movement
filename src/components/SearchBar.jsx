@@ -29,6 +29,8 @@ export default function SearchBar({ list }) {
   const submitSearch = () => {
     if (search.id) {
       history.push(`/classes/${search.id}`);
+    } else if (search.name === '') {
+      history.push(`/`)
     } else {
       history.push(`/search/${search.name}`)
     }

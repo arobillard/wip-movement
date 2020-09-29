@@ -5,6 +5,7 @@ import '../styles/navbar.css';
 import SearchBar from './SearchBar';
 import classService from '../utils/classService';
 import userService from '../utils/userService';
+import { sign } from 'jsonwebtoken';
 
 function NavBar({ user, handleLogin }) {
 
@@ -23,10 +24,10 @@ function NavBar({ user, handleLogin }) {
   }
 
   const rightSide = user ? (
-    <>
-      {user.username}
-      <button onClick={signout}>Log Out</button>
-    </>
+    <div className="right-side">
+      <span>{user.username}</span>
+      <p onClick={signout}>Log Out</p>
+    </div>
   ) : (
       <div className="right-side">
         <button onClick={e => redirect(e, 'login')}>Login</button>
@@ -36,7 +37,7 @@ function NavBar({ user, handleLogin }) {
 
   return (
     <nav>
-      <h2 onClick={e => redirect(e, '')}>Works in Progress</h2>
+      <h2 onClick={e => redirect(e, '')}>Works in Progress Movement</h2>
       <div className="categories-wrapper"></div>
       <div className="search-container">
         <SearchBar list={classService.getAll} />
