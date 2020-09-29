@@ -110,6 +110,25 @@
     overflow: hidden;
  }
 
+ .random-list li:hover h5 {
+     opacity: 0;
+ }
+
+ .random-list h5 {
+     position: absolute;
+     bottom: 0;
+
+     width: 100%;
+     border-bottom: 3px solid #333;
+     background-color: var(--white);
+     opacity: .6;
+     text-align: center;
+     font-size: 1.4em;
+     padding: 10px;
+     z-index: 5;
+
+ }
+
  .random-list li img {
      height: 90%;
      position: absolute;

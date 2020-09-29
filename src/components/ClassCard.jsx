@@ -14,6 +14,7 @@ export default function ClassCard({ cls }) {
   return (
     <>
       <img src="images/Test-Dancer.jpeg" alt="" />
+      <h5>{cls.name}</h5>
       <div className="class-card-container">
         <h4>{cls.name}</h4>
         <p>With {cls.instructor}</p>

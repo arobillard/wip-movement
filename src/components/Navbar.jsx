@@ -16,17 +16,9 @@ function NavBar({ user, handleLogin }) {
     history.push('/' + where);
   }
 
-  const signout = e => {
-    e.preventDefault();
-    userService.logout();
-    handleLogin();
-    history.push('/')
-  }
-
   const rightSide = user ? (
     <div className="right-side">
-      <span>{user.username}</span>
-      <p onClick={signout}>Log Out</p>
+      <a href={`/user/${user._id}`}>{user.username}</a>
     </div>
   ) : (
       <div className="right-side">
@@ -37,7 +29,7 @@ function NavBar({ user, handleLogin }) {
 
   return (
     <nav>
-      <h2 onClick={e => redirect(e, '')}>Works in Progress Movement</h2>
+      <h2 onClick={e => redirect(e, '')}>Works in Progress <br /><span>Movement</span></h2>
       <div className="categories-wrapper"></div>
       <div className="search-container">
         <SearchBar list={classService.getAll} />
