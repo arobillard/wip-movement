@@ -21,13 +21,10 @@ const classSchema = new Schema({
     type: String,
     default: 'Caitlin Elmslie'
   },
-  enrolled: [{
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  }],
-  icon: {
-    type: Number,
-    default: 1
+  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
+  screenshot: {
+    type: String,
+    default: 'images/Test-Dancer.jpeg'
   },
   tags: [String],
   featured: { type: Boolean, default: false }

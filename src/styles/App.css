@@ -7,6 +7,7 @@ box-sizing: border-box;
 * {
   --white: #f3f3f3;
   --tan: #ECC385;
+  --orangy: #e6a067;
   --dark-blue:  rgb(64, 64, 212);
 }
 
@@ -29,6 +30,7 @@ main {
   /* background-color: lightblue; */
   width: 100%;
   max-width: 1400px;
+  min-height: 80vh;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -59,4 +61,31 @@ main {
 .banner.banner-showing {
   top: 0;
   transition: top 1s ease-in-out;
+}
+
+footer {
+  background-color: var(--tan);
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+
+footer a:hover {
+  border-radius: 3px 3px 0 0;
+  border-bottom: 3px solid #777;
+}
+
+footer a {
+  display: block;
+  background-color: var(--white);
+  width: 120px;
+  height: 50px;
+  border-radius: 3px;
+  margin: 20px auto;
+
+  padding-top: 17px;
+
+  text-decoration: none;
+  color: var(--dark-blue);
+  font-weight: 700;
 }

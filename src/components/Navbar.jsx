@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import '../styles/navbar.css';
 
 import SearchBar from './SearchBar';
 import classService from '../utils/classService';
 import userService from '../utils/userService';
-import { sign } from 'jsonwebtoken';
 
-function NavBar({ user, handleLogin }) {
+function NavBar({ navbarLoad }) {
+
+  const [user, setUser] = useState({});
 
   const history = useHistory();
 
@@ -18,14 +19,19 @@ function NavBar({ user, handleLogin }) {
 
   const rightSide = user ? (
     <div className="right-side">
+      {process.env.REACT_APP_ADMINS.split(' ').includes(user._id) ? <a href={`/admin`}>Admin</a> : ''}
       <a href={`/user/${user._id}`}>{user.username}</a>
     </div>
   ) : (
-      <div className="right-side">
+      <div className="right-side logged-out">
         <button onClick={e => redirect(e, 'login')}>Login</button>
         <button onClick={e => redirect(e, 'signup')}>Sign Up</button>
       </div>
     )
+
+  useEffect(() => {
+    setUser(userService.getUser());
+  }, [navbarLoad])
 
   return (
     <nav>

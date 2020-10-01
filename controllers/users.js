@@ -36,7 +36,36 @@ const login = async (req, res) => {
   }
 }
 
+const saveClass = async (req, res) => {
+  try {
+    let userModel = await User.findById(req.body.userId);
+    if (!userModel.myClasses.includes(req.body.classId)) userModel.myClasses.push(req.body.classId);
+    let saved = await userModel.save();
+    let token = createJWT(saved);
+    res.json({ token })
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
+
+const unSaveClass = async (req, res) => {
+  try {
+    let userModel = await User.findById(req.body.userId);
+    console.log(userModel.myClasses);
+    userModel.myClasses.pull(req.body.classId)
+    console.log(userModel.myClasses);
+
+    let newUser = await userModel.save();
+    let token = createJWT(newUser);
+    res.json({ token, newUser })
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
+
 module.exports = {
   signup,
-  login
+  login,
+  saveClass,
+  unSaveClass,
 }

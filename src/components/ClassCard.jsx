@@ -1,5 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
+import '../styles/classCard.css';
 
 export default function ClassCard({ cls }) {
 
@@ -12,8 +13,8 @@ export default function ClassCard({ cls }) {
   }
 
   return (
-    <>
-      <img src="images/Test-Dancer.jpeg" alt="" />
+    <div className='class-card'>
+      <img src={`/${cls.screenshot}`} alt="" />
       <h5>{cls.name}</h5>
       <div className="class-card-container">
         <h4>{cls.name}</h4>
@@ -22,6 +23,6 @@ export default function ClassCard({ cls }) {
         <button onClick={() => history.push(`/classes/${cls._id}`)}>Check it out</button>
       </div>
       <div className="class-card-bg"></div>
-    </>
+    </div>
   )
 }

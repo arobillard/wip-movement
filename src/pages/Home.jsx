@@ -15,7 +15,7 @@ export default function Home() {
   useEffect(() => {
     const fetchClasses = async () => {
       try {
-        let res = await classService.get4Random();
+        let res = await classService.getRandom(4);
         setRandomClasses(res.classes);
       } catch (err) {
         setErrMsg(err.message);

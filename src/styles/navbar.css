@@ -45,17 +45,25 @@ nav .right-side {
     align-items: center;
 }
 
+nav .right-side {
+    height: 100%;
+}
+
 nav .right-side a:hover {
-    text-decoration: underline;
+    border-bottom: 3px solid #888;
 }
 
 nav .right-side a{
     color: #333;
     font-size: 1.8em;
     margin-right: 30px;
+    padding: 0;
     text-decoration: none;
-    text-align: right;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-bottom: 2px solid var(--tan);
+
 }
 
 nav p {
@@ -77,18 +85,44 @@ nav p {
         nav .right-side {
             display: flex;
             width: 200px;
-            height: 70%;
+            /* height: 70%; */
+            justify-content: flex-end;
             align-items: center;
+        }
+
+        nav .right-side.logged-out {
+            height: 70%;
+        }
+
+        nav .right-side button:hover,
+        nav .right-side button:focus {
+            cursor: pointer;
+            border-radius: 2px 2px 0 0;
+            color: #333;
+            background-color: var(--white);
+            outline: none;
         }
 
         nav .right-side button {
             height: 100%;
-            width: 50%;
             border: none;
             background-color: var(--dark-blue);
+            border-bottom: 2px solid var(--dark-blue);
             border-radius: 2px;;
             color: var(--white);
             font-size: 1.3em;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 200ms linear;
+        }
+
+        nav .right-side button:first-child:hover,
+        nav .right-side button:first-child:focus {
+            border-bottom: 2px solid #777;
+            color: #777;
+            outline: none;
         }
 
         nav .right-side button:first-child {
@@ -96,7 +130,12 @@ nav p {
             color: #444;
             height: 60%;
             text-align: right;
-            padding-right: 10px;
+            padding:0;
+            margin-right: 10px;
+            border-bottom: 2px solid var(--tan);
+
+
+            transition: color 200ms linear;
         }
 
    }

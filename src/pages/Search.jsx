@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Redirect } from 'react-router-dom';
 import classService from '../utils/classService';
+import userService from '../utils/userService';
 
 export default function Search() {
 
   const { search } = useParams();
   const history = useHistory();
 
+  const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
   const [list, setList] = useState([]);
   const [errMsg, setErrMsg] = useState('');
@@ -24,6 +26,7 @@ export default function Search() {
       }
     }
     fetchData();
+    setUser(userService.getUser());
     setLoading(false);
   }, [])
 
@@ -34,13 +37,15 @@ export default function Search() {
       </main>
     )
   } else {
-    return (
+    return user ? (
       <main className="main-search">
         <p className="err-message">{errMsg}</p>
         <ul>
           {list.map(c => <li key={c._id}>{c.name}</li>)}
         </ul>
       </main>
-    )
+    ) : (
+        <Redirect to="/login" />
+      )
   }
 }

@@ -1,5 +1,10 @@
+.main-signup h1,
+.main-login h1 {
+    margin: 30px;
+}
+
 .main-signup form,
-.mainlogin form {
+.main-login form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,16 +13,120 @@
     max-width: 600px;
 }
 
+.main-signup form div,
+.main-login form div {
+    width: 95%;
+    text-align: left;
+    border: 2px solid var(--dark-blue);
+    border-radius: 3px;
+    position: relative;
+    margin: 10px;
+}
+
 .main-signup label,
 .main-login label {
-    width: 100%;
-    text-align: left;
+    position: absolute;
+    font-size: 1.3em;
+    color: var(--dark-blue);
+    left: 30px;
+    top: 10px;
+    background-color: var(--white);
+    padding: 0 10px;
+
+    transition: top 250ms ease-in-out, left 250ms ease-in-out;
+}
+
+
+.main-signup input:focus + .label,
+.main-signup input:hover + .label,
+.main-login input:focus + .label,
+.main-login input:hover + .label {
+    top: -14px;
+    left: 20px;
+}
+
+.label.typed {
+    top: -14px;
+    left: 20px;
 }
 
 .main-signup input,
 .main-login input {
     width: 100%;
+    height: 45px;
+    border: none;
+    background-color: var(--white);
+
+    font-size: 1.3em;
+    color: #333;
+    padding: 10px 30px 0 30px;
 }
-.member {
+.main-signup form .member,
+.main-login form .member {
     display: flex;
+    justify-content: center;
+    border: none;
+
+    font-size: 1.2em;
+    color: #333;
+}
+
+.member a:hover {
+    text-decoration: underline;
+}
+
+.member a {
+    margin-left: 20px;
+    color: var(--dark-blue);
+    text-decoration: none;
+}
+
+.signup-disclaimer {
+    width: 100%;
+    margin: 30px;
+    padding: 20px;
+    font-size: 1em;
+    background-color: var(--orangy);
+    border-radius: 3px;;
+    color: var(#333)
+}
+
+.signup-disclaimer p {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.main-signup form button:hover,
+.main-login form button:hover {
+    background-color: var(--tan);
+    color: #333;
+    cursor: pointer;
+    border-radius: 4px 4px 0 0;
+}
+
+.main-signup form button,
+.main-login form button {
+    font-size: 2em;
+    padding: 20px 40px;
+    margin: 20px;
+    
+    border: none;
+    border-bottom: 3px solid var(--dark-blue);
+    border-radius: 4px;;
+    background-color: var(--dark-blue);
+    color: var(--white);
+
+    transition: color 150ms linear, background-color 150ms linear;
+}
+
+@media only screen and (min-width: 678px) {
+    .signup-disclaimer {
+        width: 70%;
+        padding: 30px;
+        font-size: 1.3em;
+
+    }
+    .main-signup form div {
+        width: 100%;
+    }
 }

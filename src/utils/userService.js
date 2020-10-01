@@ -41,9 +41,33 @@ const logout = () => {
   tokenService.removeToken();
 }
 
+const saveClass = async (classId, userId) => {
+  try {
+    let res = await fetch(BASE_URL + 'save-class', SETUP_BODY({ userId, classId }));
+    res = await res.json();
+    if (res.err) throw new Error(res.err);
+    return res.token;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}
+
+const unSaveClass = async (classId, userId) => {
+  try {
+    let res = await fetch(BASE_URL + 'unsave-class', SETUP_BODY({ userId, classId }));
+    res = await res.json();
+    if (res.err) throw new Error(res.err);
+    return res;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}
+
 export default {
   signup,
   getUser,
   login,
   logout,
+  saveClass,
+  unSaveClass,
 }

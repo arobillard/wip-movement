@@ -1,0 +1,14 @@
+
+.logout-p:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #333;
+}
+
+.logout-p {
+    margin-top: auto;
+    color: var(--dark-blue);
+    font-size: 1.3em;
+
+    transition: color 100ms linear;
+}

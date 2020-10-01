@@ -38,9 +38,11 @@
 .search-wrapper .auto-options {
     position: absolute;
     top: 50%;
+    left: 20px;
     z-index: 1;
 
-    width: 100%;
+    width: calc(100% - 20px);
+    max-width: 400px;
     list-style: none;
     background-color: #aaa;
     border-radius: 0 0 4px 4px;

@@ -58,7 +58,7 @@ export default function SearchBar({ list }) {
       </form>
       <i className="fas fa-search"></i>
       {showing && <ul className='auto-options'>
-        {options.filter(option => option.name.toLowerCase().match(search.name.toLowerCase())).slice(0, 10).map(option => <li onClick={() => clickOption(option)}>{option.name}</li>)}
+        {options.filter(option => option.name.toLowerCase().match(search.name.toLowerCase())).slice(0, 10).map(option => <li key={option._id} onClick={() => clickOption(option)}>{option.name}</li>)}
       </ul>}
     </div>
   )
