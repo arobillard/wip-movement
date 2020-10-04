@@ -52,7 +52,7 @@ const getRandom = async (num) => {
     if (res.err) throw new Error(res.err);
     return res;
   } catch (err) {
-    throw new Error(err.essage)
+    throw new Error(err.message)
   }
 }
 const getSimilar = async (id, num) => {

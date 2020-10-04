@@ -17,6 +17,7 @@ export default function Home() {
       try {
         let res = await classService.getRandom(4);
         setRandomClasses(res.classes);
+
       } catch (err) {
         setErrMsg(err.message);
       }

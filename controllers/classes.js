@@ -48,11 +48,13 @@ const getFeatured = async (req, res) => {
 const getRandom = async (req, res) => {
   try {
     let resp = await Prerecorded.find({ type: { $ne: 'C' } });
+    if (resp.length < req.params.num) return res.json({ classes: resp });
     let classes = [];
     let used = [];
     for (let i = 0; i < req.params.num; i++) {
       let ind = Math.floor(Math.random() * resp.length);
       while (used.includes(ind)) {
+        // console.log('here')
         ind = Math.floor(Math.random() * resp.length);
       }
       used.push(ind);
@@ -60,7 +62,7 @@ const getRandom = async (req, res) => {
     }
     res.json({ classes })
   } catch (err) {
-    res.status(500).json({ classes: [], err: err.message })
+    res.status(500).json({ classes: [], err })
   }
 }
 

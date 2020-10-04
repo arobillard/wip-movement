@@ -169,6 +169,22 @@
     cursor: pointer;
 }
 
+.my-form .featured-check {
+    border: none;
+    display: flex;
+}
+
+.my-form .featured-check label {
+    position: relative;
+    font-weight: bold;
+    margin: 5px 10px 0 0;
+}
+
+.my-form .featured-check input {
+    height: 50%;
+    align-self: center;
+}
+
 @media only screen and (min-width: 678px) {
     
     .my-form div {

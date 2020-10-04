@@ -11,7 +11,8 @@ const signup = async (req, res) => {
   const user = new User(req.body);
   try {
     let newUser = await user.save();
-    const token = createJWT(user);
+    console.log(newUser, user)
+    const token = createJWT(newUser);
     res.json({ token });
   } catch (err) {
     res.status(400).json({ err: 'Email taken..' });

@@ -11,7 +11,8 @@ const defaultForm = {
   screenshot: {},
   video: {},
   type: 'C',
-  tags: ['']
+  tags: [''],
+  featured: false
 }
 
 export default function NewClass() {
@@ -103,6 +104,10 @@ export default function NewClass() {
             <option value="M">Movement Breakdown</option>
           </select>
           <label htmlFor="tags" className='label typed'>Type</label>
+        </div>
+        <div className="featured-check">
+          <label htmlFor="featured">Featured?</label>
+          <input type="checkbox" id="featured" name="featured" />
         </div>
         {loading ? <div className="loading"><i className="fas fa-circle-notch fa-spin"></i></div> : <button type="submit">Submit</button>}
       </div>
