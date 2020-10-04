@@ -47,6 +47,13 @@ export default function NewClass() {
     }
   }
 
+  const toggleFeatured = () => {
+    setFormData(pre => ({
+      ...pre,
+      featured: !pre.featured
+    }))
+  }
+
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
@@ -105,10 +112,7 @@ export default function NewClass() {
           </select>
           <label htmlFor="tags" className='label typed'>Type</label>
         </div>
-        <div className="featured-check">
-          <label htmlFor="featured">Featured?</label>
-          <input type="checkbox" id="featured" name="featured" />
-        </div>
+        <h2 className="featured-toggle" onClick={toggleFeatured}>{formData.featured ? 'Featured!' : 'Not Featured'}</h2>
         {loading ? <div className="loading"><i className="fas fa-circle-notch fa-spin"></i></div> : <button type="submit">Submit</button>}
       </div>
     </form>

@@ -16,14 +16,12 @@ const adminUploadVideo = multer({
     bucket: 'works-in-progress-bucket/videos',
     acl: 'public-read',
     contentType: (req, file, cb) => {
-      console.log('here');
       cb(null, file.mimetype)
     },
     metadata: (req, file, cb) => {
       cb(null, { fieldName: file.fieldname });
     },
     key: (req, file, cb) => {
-      console.log(file)
       let newKey = file.originalname.replace(' ', '');
       cb(null, newKey);
     }
@@ -36,14 +34,12 @@ const adminUploadScreenshot = multer({
     bucket: 'works-in-progress-bucket/screenshots',
     acl: 'public-read',
     contentType: (req, file, cb) => {
-      console.log('here');
       cb(null, file.mimetype)
     },
     metadata: (req, file, cb) => {
       cb(null, { fieldName: file.fieldname });
     },
     key: (req, file, cb) => {
-      console.log(file)
       let newKey = file.originalname.replace(' ', '');
       cb(null, newKey);
     }

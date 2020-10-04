@@ -169,20 +169,17 @@
     cursor: pointer;
 }
 
-.my-form .featured-check {
-    border: none;
-    display: flex;
+.my-form h2.featured-toggle:hover {
+    border-bottom: 2px solid #333;
+    cursor: pointer;
 }
 
-.my-form .featured-check label {
-    position: relative;
-    font-weight: bold;
-    margin: 5px 10px 0 0;
-}
-
-.my-form .featured-check input {
-    height: 50%;
-    align-self: center;
+.my-form h2.featured-toggle {
+    margin-left: 20px;
+    width: 400px;
+    display: block;
+    text-align: center;
+    border-bottom: 2px solid var(--white);
 }
 
 @media only screen and (min-width: 678px) {

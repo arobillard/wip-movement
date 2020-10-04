@@ -23,7 +23,7 @@ export default function FeaturedHome() {
   }, [])
 
   return (
-    <div className="featured-container" style={{ background: `url("i${featured.screenshot}")`, backgroundPosition: 'center' }}>
+    <div className="featured-container" style={{ background: `url("${featured.screenshot}")`, backgroundPosition: 'center' }}>
       <div className="featured-card">
         <span className="featured-card-title">{featured.name}</span>
         <p>{featured.description}</p>
