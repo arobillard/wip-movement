@@ -27,7 +27,8 @@ export default function Home() {
 
   return (
     <main className="main-home">
-      <FeaturedHome />
+      {/* <FeaturedHome /> */}
+      <img className="featured-img" src="images/halloween-collab.png" alt="" />
       <h3>Fun Classes for all skill levels!</h3>
       {errMsg && <p className="err-message">{errMsg}</p>}
       <ul className="random-list">

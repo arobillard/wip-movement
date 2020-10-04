@@ -23,15 +23,16 @@ export default function FeaturedHome() {
   }, [])
 
   return (
-    <div className="featured-container" style={{ background: `url("${featured.screenshot}")`, backgroundPosition: 'center' }}>
-      <div className="featured-card">
+    <div className="featured-container" >
+      <img src="images/halloween-collab.png" alt="" />
+      {/* <div className="featured-card">
         <span className="featured-card-title">{featured.name}</span>
         <p>{featured.description}</p>
         <span className='featured-card-instructor'>With {featured.instructor}
           <button onClick={() => history.push(`/classes/${featured._id}`)}>Check it out</button>
         </span>
       </div>
-      <p className="err-message">{errMsg}</p>
+      <p className="err-message">{errMsg}</p> */}
     </div>
   )
 }

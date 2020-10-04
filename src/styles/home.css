@@ -26,6 +26,10 @@
      align-items: flex-end;
  }
 
+ .featured-img {
+    width: 100%;
+ }
+
  .featured-card {
      width: 100%;
      max-width: 400px;
