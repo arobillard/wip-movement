@@ -55,7 +55,7 @@ export default function App() {
             <p onClick={removeBanner}>X</p>
           </div>
         } */}
-        {user ? '' : <h1 className="mobile-wip">Works in Progress <span>Movement</span></h1>}
+        <h1 className="mobile-wip">Works in Progress <span>Movement</span></h1>
         <NavBar navbarLoad={navbarLoad} />
       </header>
       <Switch>

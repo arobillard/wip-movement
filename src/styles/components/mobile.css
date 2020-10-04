@@ -118,7 +118,7 @@
 
     transition: left 400ms ease-in;
 
-    padding: 10% 30px;
+    padding: 10% 30px 25% 30px;
 
     display: flex;
     flex-direction: column;
