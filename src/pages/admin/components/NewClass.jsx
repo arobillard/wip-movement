@@ -9,7 +9,7 @@ const defaultForm = {
   instructor: 'Caitlin Elmslie',
   dueDate: '',
   screenshot: {},
-  video: {},
+  video: '',
   type: 'C',
   tags: [''],
   featured: false
@@ -28,7 +28,7 @@ export default function NewClass() {
         ...formData,
         type: e.target.value
       })
-    } else if (e.target.name === 'video' || e.target.name === 'screenshot') {
+    } else if (e.target.type === 'file') {
       let file = e.target.files[0];
       setFormData({
         ...formData,
@@ -91,8 +91,8 @@ export default function NewClass() {
         </div>
       </div>
       <div>
-        <input type="file" name="video" id="video" onChange={handleChange} /* required */ />
-        <label htmlFor="video" className='label typed' >Video File</label>
+        <input type="text" name="video" id="video" onChange={handleChange} /* required */ />
+        <label htmlFor="video" className={`label ${formData.video ? 'typed' : ''}`} >Video URL</label>
       </div>
       <div>
         <input type="file" name="screenshot" id="screenshot" onChange={handleChange} /* required */ />

@@ -39,19 +39,19 @@ export default function App() {
   useEffect(() => {
     setUser(userService.getUser());
     setLoading(false);
-    setBanner(tokenService.checkBanner());
+    // setBanner(tokenService.checkBanner());
   }, [])
   return (
     <BrowserRouter>
       <header>
-        {!loading && banner &&
+        {/* {!loading && banner &&
           <div className={`banner ${banner ? 'banner-showing' : ''}`}>
             <div className="main-banner">
               <h2>This is a test banner. Enroll in a Live Class Today!</h2>
             </div>
             <p onClick={removeBanner}>X</p>
           </div>
-        }
+        } */}
         <NavBar navbarLoad={navbarLoad} />
       </header>
       <Switch>

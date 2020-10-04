@@ -119,6 +119,17 @@ const addOne = async (req, res) => {
   }
 }
 
+const updateOne = async (req, res) => {
+  try {
+    let cls = await Prerecorded.findOneAndUpdate({ _id: req.body._id }, { $set: req.body });
+    console.log(req.body, cls);
+    let resp = await cls.save();
+    res.json({ class: resp });
+  } catch (err) {
+    res.status(500).json({ class: {}, err: err.message });
+  }
+}
+
 const writeComment = async (req, res) => {
   try {
     let cls = await Prerecorded.findById(req.params.id);
@@ -154,6 +165,7 @@ module.exports = {
   getSaves,
   getUserClasses,
   addOne,
+  updateOne,
   writeComment,
   deleteOne
 }

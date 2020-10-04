@@ -13,16 +13,16 @@ const newClass = async formData => {
       await fetch(BASE_URL + 'remove-feature', BASE_SETUP({}));
 
     }
-    let videoResponse = await uploadToAmazon(formData.video, 'upload-class');
+    // let videoResponse = await uploadToAmazon(formData.video, 'upload-class');
     let pictureResponse = await uploadToAmazon(formData.screenshot, 'upload-screenshot');
 
-    if (videoResponse.ok && pictureResponse.ok) {
-      let video = await videoResponse.json();
+    if (pictureResponse.ok) {
+      // let video = await videoResponse.json();
       let screenshot = await pictureResponse.json();
       let form = {
         ...formData,
         tags: convertTags(formData.tags),
-        video: video.videoUrl,
+        // video: video.videoUrl,
         screenshot: screenshot.screenshotUrl,
       }
       let classRes = await fetch('/api/classes/add', BASE_SETUP(form));
@@ -30,10 +30,21 @@ const newClass = async formData => {
       if (classRes.err) throw new Error(classRes.err.match(/Prerecorded validation failed/) ? 'Required field missing..' : classRes.err);
       return classRes;
     } else {
-      throw new Error(videoResponse.ok ? pictureResponse.err : videoResponse.err);
+      throw new Error(pictureResponse.err);
     }
   } catch (err) {
     throw new Error(err.message);
+  }
+}
+
+const updateOne = async cls => {
+  try {
+    let res = await fetch('/api/classes/update-one/', BASE_SETUP(cls));
+    res = await res.json();
+    if (res.err) throw new Error(res.err);
+    return res;
+  } catch (err) {
+    throw new Error(err);
   }
 }
 
@@ -90,6 +101,7 @@ function convertTags(arr) {
 
 export default {
   newClass,
+  updateOne,
   getAllClasses,
   getOneClass,
   deleteOneClass

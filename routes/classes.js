@@ -4,6 +4,7 @@ const classCtrl = require('../controllers/classes');
 
 router.post('/', classCtrl.getAll);
 router.post('/add', classCtrl.addOne);
+router.post('/update-one', classCtrl.updateOne);
 router.post('/search/:search', classCtrl.getSearch);
 router.post('/feature', classCtrl.getFeatured)
 router.post('/random/:num', classCtrl.getRandom)

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import '../../../styles/components/forms.css';
 
-import classService from '../../../utils/classService';
 import adminService from '../../../utils/adminService';
 
 const defaultForm = {
@@ -32,7 +31,7 @@ export default function UpdateClass() {
         ...formData,
         type: e.target.value
       })
-    } else if (e.target.name === 'video' || e.target.name === 'screenshot') {
+    } else if (e.target.type === 'file') {
       let file = e.target.files[0];
       setFormData({
         ...formData,
@@ -56,7 +55,7 @@ export default function UpdateClass() {
     setLoading(true);
     console.log('hello')
     try {
-      await classService.updateOne(formData);
+      await adminService.updateOne(formData);
       setSuccessMessage('Success!');
       setFormData(defaultForm);
     } catch (err) {
@@ -102,12 +101,12 @@ export default function UpdateClass() {
           </div>
         </div>
         <div>
-          <input type="file" name="video" id="video" onChange={handleChange} /* required */ />
-          <label htmlFor="video" className='label typed' >Video File</label>
+          <input type="text" name="video" id="video" value={formData.video} onChange={handleChange} /* required */ />
+          <label htmlFor="video" className='label typed' >Video URL</label>
         </div>
         <div>
           <input type="file" name="screenshot" id="screenshot" onChange={handleChange} /* required */ />
-          <label htmlFor="screenshot" className='label typed' >Screen Shot</label>
+          <label htmlFor="screenshot" className={`label ${formData.instructor ? 'typed' : ''}`} >Screen Shot</label>
         </div>
         <div>
           <input type="text" name="tags" id="tags" value={formData.tags.join(', ')} onChange={handleChange} placeholder="tag1, tag2" /* required */ />
@@ -123,7 +122,7 @@ export default function UpdateClass() {
             </select>
             <label htmlFor="tags" className='label typed'>Type</label>
           </div>
-          {loading ? <div className="loading"><i className="fas fa-circle-notch fa-spin"></i></div> : <button type="submit">Submit</button>}
+          {loading ? <div className="loading"><i className="fas fa-circle-notch fa-spin"></i></div> : <button type="submit">Update</button>}
         </div>
       </form>
       <h2 style={{ marginBottom: '30px' }}>Users who have saved this class:</h2>

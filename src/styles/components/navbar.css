@@ -15,20 +15,32 @@ nav h2:hover {
     border-bottom: 3px solid #888;
 }
 
-nav h2 {
+/* nav .h2-div h2 {
     color: var(--dark-blue);
     font-size: 1em;
     text-align: center;
     height: 100%;
-    padding-top: 10px;
+    display: flex;
+    align-items: center;
 }
 
-nav h2 span {
+nav .h2-div h2 span {
     color: var(--white);
     font-size: 1.7em;
     text-align: center;
     display: block;
     width: 100%;
+} */
+
+nav .h2-div h2 {
+    font-size: 1em;
+    color: var(--dark-blue);
+}
+
+nav .h2-div span {
+    font-size: 1.7em;
+    text-align: center;
+    color: var(--white);
 }
 
 nav h2,

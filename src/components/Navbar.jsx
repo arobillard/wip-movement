@@ -35,7 +35,7 @@ function NavBar({ navbarLoad }) {
 
   return (
     <nav>
-      <h2 onClick={e => redirect(e, '')}>Works in Progress <br /><span>Movement</span></h2>
+      <div className="h2-div"><h2 onClick={e => redirect(e, '')}>Works in Progress <br /><span>Movement</span></h2></div>
       <div className="categories-wrapper"></div>
       <div className="search-container">
         <SearchBar list={classService.getAll} />
