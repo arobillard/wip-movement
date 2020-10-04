@@ -9,6 +9,10 @@ const BASE_SETUP = body => ({
 
 const newClass = async formData => {
   try {
+    if (formData.featured) {
+      await fetch(BASE_URL + 'remove-feature', BASE_SETUP({}));
+
+    }
     let videoResponse = await uploadToAmazon(formData.video, 'upload-class');
     let pictureResponse = await uploadToAmazon(formData.screenshot, 'upload-screenshot');
 

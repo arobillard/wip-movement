@@ -55,11 +55,22 @@ const uploadScreenshotToAmazon = async (req, res) => {
   }
 }
 
+const removeFeature = async (req, res) => {
+  try {
+    let removed = await Prerecorded.updateMany({ featured: true }, { $set: { featured: false } });
+    console.log(removed);
+    res.json({ removed })
+  } catch (err) {
+    res.status(500).json({ err });
+  }
+}
+
 module.exports = {
   getAllClasses,
   getOneClass,
   uploadClassToAmazon,
-  uploadScreenshotToAmazon
+  uploadScreenshotToAmazon,
+  removeFeature
 }
 
 
