@@ -30,6 +30,7 @@ export default function Home() {
       {/* <FeaturedHome /> */}
       <img className="featured-img" src="images/halloween-collab.png" alt="" />
       <h3>Fun Classes for all skill levels!</h3>
+      <div className="hr" />
       {errMsg && <p className="err-message">{errMsg}</p>}
       <ul className="random-list">
         {randomClasses.map(c => <li key={c._id}><ClassCard cls={c} myKey={c._id} /></li>)}

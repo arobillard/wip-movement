@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './styles/App.css';
+import './styles/components/mobile.css';
 
 import NavBar from './components/Navbar';
 
@@ -15,6 +16,8 @@ import Profile from './pages/Profile';
 import Admin from './pages/admin/Admin';
 import NewClassPage from './pages/admin/NewClassPage';
 import UpdateClassPage from './pages/admin/UpdateClassPage';
+
+import Mobile from './components/Mobile';
 
 import userService from './utils/userService';
 import tokenService from './utils/tokenService';
@@ -52,6 +55,7 @@ export default function App() {
             <p onClick={removeBanner}>X</p>
           </div>
         } */}
+        {user ? '' : <h1 className="mobile-wip">Works in Progress <span>Movement</span></h1>}
         <NavBar navbarLoad={navbarLoad} />
       </header>
       <Switch>
@@ -84,6 +88,7 @@ export default function App() {
 
         <Route path='/*' render={() => <main className="not-found">404 Page not Found</main>} />
       </Switch>
+      <Mobile user={user} />
       <footer>
         <p>Have any questions or concerns? Send us an email and we'll get back to you as soon as possible!</p>
         <a href="mailto:worksinprogressmovement@gmail.com?subject=URGENT FROM SITE" target="_blank" rel="noopener noreferrer">EMAIL US</a>

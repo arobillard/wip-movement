@@ -8,7 +8,7 @@ export default function Admin() {
   const [refresh, setRefresh] = useState(1);
   const [dances, setDances] = useState([]);
   const [collabs, setCollabs] = useState([]);
-  const [pillates, setPillates] = useState([]);
+  const [pilates, setPilates] = useState([]);
   const [movements, setMovements] = useState([]);
   const [errMsg, setErrMsg] = useState('');
 
@@ -27,7 +27,7 @@ export default function Admin() {
         let res = await adminService.getAllClasses();
         setDances(res.dances ? res.dances : []);
         setCollabs(res.collabs);
-        setPillates(res.pillates);
+        setPilates(res.pilates);
         setMovements(res.movements);
       } catch (err) {
         setErrMsg(err.message)
@@ -42,8 +42,8 @@ export default function Admin() {
       {errMsg && <p className="err-message">{errMsg}</p>}
       <h2>Dance Classes</h2>
       <AdminList list={dances} deleteClass={deleteClass} />
-      <h2>Pillates Classes</h2>
-      <AdminList list={pillates} deleteClass={deleteClass} />
+      <h2>Pilates Classes</h2>
+      <AdminList list={pilates} deleteClass={deleteClass} />
       <h2>Collaborations</h2>
       <AdminList list={collabs} deleteClass={deleteClass} />
       <h2>Movement Breakdowns</h2>

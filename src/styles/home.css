@@ -79,10 +79,12 @@
      width: 100%;
      display: grid;
      grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
-     
  }
 
- 
+ .random-list li {
+    /* border: 1px solid red; */
+    /* height: 200px; */
+ }
 
 /* ============================================================================================================
         DIRECTOR MSG

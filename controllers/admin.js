@@ -10,7 +10,7 @@ const getAllClasses = async (req, res) => {
   try {
     let dances = await Prerecorded.find({ type: 'D' });
     let collabs = await Prerecorded.find({ type: 'C' });
-    let pillates = await Prerecorded.find({ type: 'P' });
+    let pilates = await Prerecorded.find({ type: 'P' });
     let movements = await Prerecorded.find({ type: 'M' });
     res.json({ dances, collabs, pillates, movements });
   } catch (err) {
