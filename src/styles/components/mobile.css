@@ -149,6 +149,9 @@
     .burger-container {
         display: none;
     }
+    .mobile-menu {
+        display: none;
+    }
 }
 
 @keyframes whip {
