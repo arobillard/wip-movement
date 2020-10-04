@@ -1,0 +1,36 @@
+.admin-table {
+    width: 100%;
+    border: 1px solid #333;
+    padding: 0;
+}
+
+.admin-table tr {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.admin-table th {
+    flex: 2;
+    border: 1px solid #777;
+    text-align: left;
+    padding: 2px 5px;
+}
+
+th.table-header {
+    text-align: center;
+}
+
+th.table-num {
+    flex: 1;
+    text-align: center;
+}
+
+.admin-table a:hover {
+    text-decoration: underline;
+}
+
+.admin-table a {
+    text-decoration: none;
+    color: var(--dark-blue);
+}

@@ -16,7 +16,7 @@ const classSchema = new Schema({
     required: true
   },
   dueDate: Schema.Types.Date,
-  video: String,
+  video: { type: String, required: true },
   instructor: {
     type: String,
     default: 'Caitlin Elmslie'
@@ -24,12 +24,13 @@ const classSchema = new Schema({
   comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   screenshot: {
     type: String,
-    default: 'images/Test-Dancer.jpeg'
+    required: true
   },
   tags: [String],
   featured: { type: Boolean, default: false }
 }, {
   timestamps: true
 })
+
 
 module.exports = mongoose.model('Prerecorded', classSchema);

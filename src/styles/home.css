@@ -116,15 +116,15 @@
  }
  .director-msg .paragraphs {
      background-color:var(--dark-blue);
-     color: var(--white);
      width: 102%;
      padding: 10px 5px;
      text-align: center;
      margin-bottom: 10px;
- }
-
- .director-msg .paragraphs p {
-     padding: 10px;
+    }
+    
+.director-msg .paragraphs p {
+    padding: 10px;
+    color: var(--white);
  }
 
  .director-msg .signature p {

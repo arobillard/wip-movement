@@ -1,4 +1,113 @@
+.title {
+    width: 60%;
+}
+.title .hr {
+    border-bottom: 2px solid #777;
+}
 
+.profile-class-list {
+    width: 80%;
+    list-style: none;
+    overflow: hidden;
+}
+
+.profile-class-card {
+    height: 70px;
+    margin: 10px 0;
+
+    border-bottom: 2px solid #333;
+}
+
+.profile-class-card-wrapper:hover {
+    cursor: pointer;
+}
+
+.profile-class-card-wrapper:hover h3,
+.profile-class-card-wrapper:hover p {
+    color: var(--white);
+}
+
+.profile-class-card-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    position: relative;
+    z-index: 1;
+}
+
+.profile-class-card-wrapper:hover::before {
+    right: 0;
+}
+
+.profile-class-card-wrapper:hover::after {
+    left: 0;
+}
+
+.profile-class-card-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-blue);
+    bottom: 0;
+    right: -100%;
+    pointer-events: none;
+    z-index: -1;
+
+    transition: right 200ms ease;
+}
+
+.profile-class-card-wrapper::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-bottom: 4px solid var(--tan);
+    bottom: -2px;
+    left: -100%;
+    pointer-events: none;
+
+    transition: left 200ms ease;
+}
+
+.profile-class-card .right {
+    content: 'asdf';
+    height: 100%;
+    display: flex;
+    flex: 1;
+}
+
+.profile-class-card button:hover {
+    cursor: pointer;
+    background-color: var(--white);
+    color: var(--red);
+    border-radius: 3px 3px 0 0;
+}
+
+.profile-class-card button {
+    background-color: var(--red);
+    border: none;
+    border-bottom: 2px solid var(--red);
+    padding: 5px;
+    margin-right: 10px;
+    border-radius: 3px;
+    color: var(--white);
+    font-weight: bold;
+
+    transition: all 250ms ease;
+}
+
+.profile-class-card p.search-tags {
+    position: absolute;
+    bottom: 1px;
+    right: 0;
+    color: #777;
+}
+
+/* =====================================================================================
+            LOGOUT
+ ===================================================================================== */
 .logout-p:hover {
     text-decoration: underline;
     cursor: pointer;
@@ -11,4 +120,4 @@
     font-size: 1.3em;
 
     transition: color 100ms linear;
-}
+} 

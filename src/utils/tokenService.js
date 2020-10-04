@@ -27,9 +27,24 @@ const removeToken = () => {
   localStorage.removeItem('token');
 }
 
+const checkBanner = () => {
+  let banner = localStorage.getItem('banner');
+  if (banner) {
+    if (new Date(parseInt(banner)).getDay() === new Date(Date.now()).getDay()) return false;
+    localStorage.removeItem('banner');
+  }
+  return true;
+}
+
+const setBanner = () => {
+  localStorage.setItem('banner', (Date.now()));
+}
+
 export default {
   setToken,
   getToken,
   getuserFromtoken,
-  removeToken
+  removeToken,
+  checkBanner,
+  setBanner
 }

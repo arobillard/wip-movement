@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useHistory } from 'react-router-dom';
-import '../styles/searchbar.css';
+import '../styles/search/searchbar.css';
 
 export default function SearchBar({ list }) {
 
@@ -42,7 +42,7 @@ export default function SearchBar({ list }) {
       setOptions(res.classes);
     }
     fetchData();
-  }, [])
+  }, [list])
 
   useEffect(() => {
     document.addEventListener('click', outsideClick);

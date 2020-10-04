@@ -18,15 +18,16 @@
 }
 
 .my-form div.row {
-    width: 100%;
+    width: 95%;
     height: auto;
     margin: 0;
     border: none;
     border-radius: 0;
 }
 
-.my-form div.large-half {
-    margin: 20px 13px;
+.my-form .row div {
+    margin: 20px 0px;
+    width: 100%;
 }
 
 .my-form div.form-description {
@@ -39,10 +40,10 @@
     color: var(--dark-blue);
     left: 30px;
     top: 10px;
-    background-color: var(--white);
+    /* background-color: var(--white); */
     padding: 0 10px;
     
-    transition: top 250ms ease-in-out, left 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
 }
 
 
@@ -52,11 +53,23 @@
 .my-form textarea:hover + .label {
     top: -14px;
     left: 20px;
+    background-color: var(--white);
 }
 
 .label.typed {
     top: -14px;
     left: 20px;
+    background-color: var(--white);
+}
+
+.my-form input::placeholder {
+    color: var(--white);
+    transition: color 200ms linear;
+}
+
+.my-form input:focus::placeholder,
+.my-form input:hover::placeholder {
+    color: #333;
 }
 
 .my-form input {
@@ -73,14 +86,11 @@
 .my-form input[type='datetime-local'] {
     padding: 10px;
     font-family: sans-serif;
+    font-size: 1.2em;
 }
 
 .my-form input[type='file'] {
     padding-top: 15px;
-}
-
-.my-form input#file-upload-button {
-    color: red;
 }
 
 .my-form div.form-description textarea {
@@ -125,6 +135,40 @@
     transition: color 150ms linear, background-color 150ms linear;
 }
 
+.my-form .row button {
+    margin: 0;
+    width: 100%;
+    font-size: 1.5em;
+    padding: 10px 60px;
+}
+
+.my-form .loading {
+    border: none;
+    color: var(--dark-blue);
+    font-size: 3em;
+    text-align: center;
+    margin: 0;
+}
+
+.my-form .selectDiv {
+    margin-left: 0;
+    
+}
+
+.my-form select:focus {
+    outline: none;
+}
+
+.my-form select {
+    width: 100%;
+    height: 100%;
+    font-size: 1.3em;
+    color: #333;
+    padding-left: 10px;
+    border: none;
+    cursor: pointer;
+}
+
 @media only screen and (min-width: 678px) {
     
     .my-form div {
@@ -132,13 +176,24 @@
     }
 
     .my-form div.row {
+        width: 100%;
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
 
     .my-form div.large-half {
         width: 49%;
-        margin-left: 0;
-        margin-right: 0;
+    }
+
+    .my-form .row button {
+        width: 30%;
+        height: 55px;
+        margin-left: 30px;
+    }
+
+    .my-form .row .loading {
+        width: 44%;
+        margin-left: 30px;
     }
 }

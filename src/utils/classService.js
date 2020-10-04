@@ -107,7 +107,7 @@ const writeComment = async (id, comment) => {
   }
 }
 
-module.exports = {
+export default {
   getAll,
   getOne,
   getSearch,

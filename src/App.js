@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './styles/App.css';
 
-import userService from './utils/userService';
-
 import NavBar from './components/Navbar';
 
 import Signup from './pages/Signup';
@@ -15,11 +13,16 @@ import Search from './pages/Search';
 import Profile from './pages/Profile';
 
 import Admin from './pages/admin/Admin';
+import NewClassPage from './pages/admin/NewClassPage';
+import UpdateClassPage from './pages/admin/UpdateClassPage';
+
+import userService from './utils/userService';
+import tokenService from './utils/tokenService';
 
 export default function App() {
 
   const [user, setUser] = useState({});
-  const [bannerShowing, setBannerShowing] = useState(false);
+  const [banner, setBanner] = useState(true);
   const [loading, setLoading] = useState(true);
   const [navbarLoad, setNavbarLoad] = useState(0);
 
@@ -28,20 +31,25 @@ export default function App() {
     setNavbarLoad(navbarLoad + 1);
   }
 
+  const removeBanner = () => {
+    tokenService.setBanner();
+    setBanner(false);
+  }
+
   useEffect(() => {
     setUser(userService.getUser());
     setLoading(false);
-    setBannerShowing(true);
+    setBanner(tokenService.checkBanner());
   }, [])
   return (
     <BrowserRouter>
       <header>
-        {!loading && bannerShowing &&
-          <div className={`banner ${bannerShowing ? 'banner-showing' : ''}`}>
+        {!loading && banner &&
+          <div className={`banner ${banner ? 'banner-showing' : ''}`}>
             <div className="main-banner">
               <h2>This is a test banner. Enroll in a Live Class Today!</h2>
             </div>
-            <p onClick={() => setBannerShowing(false)}>X</p>
+            <p onClick={removeBanner}>X</p>
           </div>
         }
         <NavBar navbarLoad={navbarLoad} />
@@ -63,7 +71,16 @@ export default function App() {
           history.push('/');
         }} />
 
-        <Route path='/admin' component={Admin} />
+        {/* ======================================================================
+                ADMIN STUFF
+        ======================================================================*/}
+
+        <Route exact path='/admin' render={() => (
+          admin ? <Admin /> : <main><h1 style={{ color: 'red', fontSize: '10vw' }}>ACCES DENIED</h1></main>)} />
+        <Route path='/admin/new-class' render={() => (
+          admin ? <NewClassPage /> : <main><h1 style={{ color: 'red', fontSize: '10vw' }}>ACCES DENIED</h1></main>)} />
+        <Route path='/admin/update-class/:id' render={() => (
+          admin ? <UpdateClassPage /> : <main><h1 style={{ color: 'red', fontSize: '10vw' }}>ACCES DENIED</h1></main>)} />
 
         <Route path='/*' render={() => <main className="not-found">404 Page not Found</main>} />
       </Switch>
@@ -74,4 +91,8 @@ export default function App() {
       </footer>
     </BrowserRouter>
   )
+  function admin() {
+    return user && process.env.REACT_APP_ADMINS.split(' ').includes(user._id)
+  }
 }
+

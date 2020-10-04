@@ -69,14 +69,20 @@ const getSimilar = async (req, res) => {
     let oldClass = await Prerecorded.findById(req.params.id);
     let index = 1
     let newClasses = await Prerecorded.find({ _id: { $ne: req.params.id }, tags: oldClass.tags[0] });
-    let resArr = [...newClasses]
+    let ids = newClasses.map(c => JSON.stringify(c._id));
     let extraClasses = []
-    while (index < 3 && newClasses.length < req.params.num) {
-      extraClasses = await Prerecorded.find({ tags: { $in: oldClass.tags[index] } });
-      resArr = [...resArr, ...extraClasses];
+    while (index < oldClass.tags.length && newClasses.length < req.params.num) {
+      extraClasses = await Prerecorded.find({ _id: { $ne: req.params.id }, tags: { $in: oldClass.tags[index] } });
+      extraClasses.forEach(c => {
+        if (ids.includes(JSON.stringify(c._id))) {
+        } else {
+          ids.push(JSON.stringify(c._id));
+          newClasses.push(c);
+        }
+      })
       index++;
     }
-    res.json({ classes: resArr.slice(0, req.params.num) })
+    res.json({ classes: newClasses.slice(0, req.params.num) })
   } catch (err) {
     res.status(500).json({ classes: [], err: err.message });
   }
@@ -107,7 +113,7 @@ const addOne = async (req, res) => {
     let resp = await newClass.save();
     res.json({ class: resp });
   } catch (err) {
-    res.status(500).json({ class: {}, err: 'Couldn\'t create class..' });
+    res.status(500).json({ class: {}, err: err.message });
   }
 }
 
@@ -125,6 +131,16 @@ const writeComment = async (req, res) => {
   }
 }
 
+const deleteOne = async (req, res) => {
+  try {
+    console.log('hello')
+    let resp = await Prerecorded.findOneAndDelete({ _id: req.params.id });
+    res.json({ deleted: resp });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
+
 
 module.exports = {
   getAll,
@@ -137,5 +153,6 @@ module.exports = {
   getUserClasses,
   addOne,
   writeComment,
+  deleteOne
 }
 

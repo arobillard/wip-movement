@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import '../styles/navbar.css';
+import '../styles/components/navbar.css';
 
 import SearchBar from './SearchBar';
 import classService from '../utils/classService';

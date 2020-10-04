@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
-import '../styles/loginsignup.css';
+import '../styles/components/loginsignup.css';
+import '../styles/components/forms.css';
 
 import userService from '../utils/userService';
 
@@ -25,7 +26,7 @@ export default function Signup({ handleLogin }) {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      let signedUp = await userService.signup(formData);
+      await userService.signup(formData);
       handleLogin();
       history.push('/');
     } catch (err) {

@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory, Redirect } from 'react-router-dom';
+import '../styles/search/search.css';
+
+import SearchCard from '../components/SearchCard';
+
 import classService from '../utils/classService';
 import userService from '../utils/userService';
 
@@ -15,20 +19,17 @@ export default function Search() {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(search)
       try {
         const data = await classService.getSearch(search);
-        console.log(data);
         setList(data.classes);
       } catch (err) {
-        console.log('here')
         setErrMsg(err.message)
       }
     }
     fetchData();
     setUser(userService.getUser());
     setLoading(false);
-  }, [])
+  }, [search])
 
   if (loading) {
     return (
@@ -39,11 +40,16 @@ export default function Search() {
   } else {
     return user ? (
       <main className="main-search">
+        <h2>Searching for: ' {search} '..</h2>
         <p className="err-message">{errMsg}</p>
         <ul>
-          {list.map(c => <li key={c._id}>{c.name}</li>)}
+          {list.length > 0 ? list.map(c => <SearchCard key={c._id} cls={c} history={history} />) :
+            <>
+              <span className="bigger-p">No results matched that search..</span>
+              <p className="no-results"><br />Check your spelling and try agin!</p>
+            </>}
         </ul>
-      </main>
+      </main >
     ) : (
         <Redirect to="/login" />
       )

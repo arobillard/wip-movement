@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import '../styles/loginsignup.css';
+import '../styles/components/loginsignup.css';
+import '../styles/components/forms.css';
 
 import userService from '../utils/userService';
 
@@ -14,8 +15,6 @@ export default function Login({ handleLogin }) {
 
   const history = useHistory();
 
-  console.log(history);
-
   const handleChange = e => {
     setFormData({
       ...formData,
@@ -26,7 +25,7 @@ export default function Login({ handleLogin }) {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      let loggedIn = await userService.login(formData);
+      await userService.login(formData);
       handleLogin();
       history.goBack();
     } catch (err) {

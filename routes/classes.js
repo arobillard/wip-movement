@@ -12,5 +12,6 @@ router.post('/saves/:id', classCtrl.getSaves)
 router.post('/user-classes', classCtrl.getUserClasses);
 router.post('/:id', classCtrl.getOne);
 router.post('/:id/comment', classCtrl.writeComment);
+router.post('/:id/delete', classCtrl.deleteOne);
 
 module.exports = router;

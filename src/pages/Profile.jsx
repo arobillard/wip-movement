@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom';
 import '../styles/profile.css';
 
+import ProfileClassCard from '../components/ProfileClassCard';
+
 import classService from '../utils/classService';
 import tokenService from '../utils/tokenService';
 import userService from '../utils/userService';
@@ -42,15 +44,19 @@ export default function Profile() {
       setClasses(classList.classes);
     }
     fetchData();
-  }, [])
+  }, [id])
 
 
   return (
     <main className="main-profile">
-      {user.username}'s PROFILE PAGE
+      <div className="title">
+        <h1>{user.username}</h1>
+        {errMsg && <p className="err-message">{errMsg}</p>}
+        <div className="hr"></div>
+      </div>
       <h3>My Classes:</h3>
-      <ul>
-        {classes.length > 0 ? classes.map(c => <li key={c._id}>{c.name}<button onClick={() => unSave(c._id)}>Unsave</button></li>) : <p>No Classes saved yet!</p>}
+      <ul className="profile-class-list">
+        {classes.length > 0 ? classes.map(c => <ProfileClassCard key={c._id} cls={c} unSave={unSave} history={history} />) : <p>No Classes saved yet!</p>}
       </ul>
       <p onClick={logOut} className="logout-p">Sign Out</p>
     </main>

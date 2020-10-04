@@ -1,0 +1,97 @@
+.no-results {
+    text-align: center;
+    display: block;
+}
+
+.no-results span {
+    margin-bottom: 20px;
+}
+
+.main-search ul {
+    list-style: none;
+    width: 70%;
+    overflow: hidden;
+}
+
+.search-card:hover {
+    cursor: pointer;
+    padding: 10px;
+}
+
+.search-card:hover h3,
+.search-card:hover p {
+    color: var(--white);
+}
+
+.search-card:hover::after {
+    left: 0;
+}
+
+.search-card:hover::before {
+    right: 0
+}
+
+.search-card {
+    width: 100%;
+    display: flex;
+
+    border-bottom: 2px solid #333;
+    padding: 10px 0;
+    margin: 10px 0;
+
+    transition: all 200ms ease;
+    position: relative;
+    z-index: 2;
+    
+    transition: all 200ms ease;
+}
+
+.search-card::before {
+    content:'';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: -100%;
+    top: 0;
+    background-color: var(--dark-blue);
+    z-index: -1;
+
+    transition: right 200ms ease;
+}
+
+.search-card::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left:-100%;
+    bottom: -2px;
+    border-bottom: 4px solid var(--tan);
+    z-index: 3;
+
+    transition: left 200ms ease;
+}
+
+.search-card h3 {
+    font-size: 1.6em;
+}
+
+.search-card p {
+    font-size: 1.2em
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.main-search .search-card p.search-tags {
+    position: absolute;
+    font-size: 1em;
+    color: #777;
+    bottom: 3px;
+    right: 0;
+}

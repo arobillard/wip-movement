@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
-import '../styles/classCard.css';
+import '../styles/classes/classCard.css';
 
 export default function ClassCard({ cls }) {
 
@@ -14,7 +14,7 @@ export default function ClassCard({ cls }) {
 
   return (
     <div className='class-card'>
-      <img src={`/${cls.screenshot}`} alt="" />
+      <img src={cls.screenshot} alt="" />
       <h5>{cls.name}</h5>
       <div className="class-card-container">
         <h4>{cls.name}</h4>

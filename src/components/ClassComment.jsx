@@ -6,7 +6,10 @@ export default function ClassComment({ cls, myKey }) {
   return (
     <div className="comment-container">
       <p>{cls.content}</p>
-      <Stars current={cls.rating} myKey={myKey} />
+      <div>
+        <Stars current={cls.rating} myKey={myKey} />
+        {cls.user && <a href={`/user/${cls.user._id}`}>{cls.user.username}</a>}
+      </div>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import '../styles/class.css';
+import '../styles/classes/class.css';
 
 import ClassCard from '../components/ClassCard';
 import ClassComment from '../components/ClassComment';
@@ -101,12 +101,20 @@ export default function Class() {
         </div>
         <h2>Comments:</h2>
         <ul className='comments-ul'>
-          {thisClass.comments && thisClass.comments.sort((a, b) => b.rating - a.rating).slice(0, 5).map(c => <li key={c._id}><ClassComment cls={c} myKey={c._id} /></li>)}
+          {thisClass.comments && thisClass.comments.length > 0 ? thisClass.comments.sort((a, b) => b.rating - a.rating).slice(0, 5).map(c => <li key={c._id}><ClassComment cls={c} myKey={c._id} /></li>) :
+            <li><p style={{ textAlign: 'center' }}>No comments yet..</p></li>
+          }
+          <li><div className="hr"></div></li>
           <li>
-            <form onSubmit={submitComment}>
-              <input type="text" value={comment} onChange={e => setComment(e.target.value)} required />
-              <Stars current={rating} handleChange={changeRating} myKey={'afj1398sdfuj'} />
-              <button type="submit">Comment</button>
+            <form onSubmit={submitComment} autoComplete="off">
+              <div className="comment-input">
+                <input type="text" value={comment} id="comment" onChange={e => setComment(e.target.value)} required />
+                <label htmlFor="comment"><span>Comment here:</span></label>
+              </div>
+              <div className="stars-and-button">
+                <Stars current={rating} handleChange={changeRating} myKey={'afj1398sdfuj'} />
+                <button type="submit">Comment</button>
+              </div>
             </form>
           </li>
         </ul>
