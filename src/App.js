@@ -88,7 +88,7 @@ export default function App() {
 
         <Route path='/*' render={() => <main className="not-found">404 Page not Found</main>} />
       </Switch>
-      <Mobile user={user} />
+      <Mobile user={user} admin={admin()} />
       <footer>
         <p>Have any questions or concerns? Send us an email and we'll get back to you as soon as possible!</p>
         <a href="mailto:worksinprogressmovement@gmail.com?subject=URGENT FROM SITE" target="_blank" rel="noopener noreferrer">EMAIL US</a>

@@ -27,7 +27,7 @@ export default function Login({ handleLogin }) {
     try {
       await userService.login(formData);
       handleLogin();
-      history.goBack();
+      history.push('/');
     } catch (err) {
       setErrMsg(err.message);
     }

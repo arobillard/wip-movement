@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import React, { useState } from 'react'
 
-export default function Mobile({ user }) {
+export default function Mobile({ user, admin }) {
 
   const [showing, setShowing] = useState(false);
 
@@ -16,6 +16,7 @@ export default function Mobile({ user }) {
       </div>
       <div className={`mobile-menu ${showing ? 'showing' : ''}`}>
         <a href="/">Home</a>
+        {admin ? <a href={`/admin`}>Admin</a> : <></>}
         {user ? <a href={`/user/${user._id}`}>{user.username}</a> :
           <>
             <a href="/login">Login</a>
