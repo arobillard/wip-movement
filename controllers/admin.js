@@ -8,11 +8,12 @@ const singleUpladScreenShot = adminUploadScreenshot.single('file');
 
 const getAllClasses = async (req, res) => {
   try {
+    console.log('here');
     let dances = await Prerecorded.find({ type: 'D' });
     let collabs = await Prerecorded.find({ type: 'C' });
     let pilates = await Prerecorded.find({ type: 'P' });
     let movements = await Prerecorded.find({ type: 'M' });
-    res.json({ dances, collabs, pillates, movements });
+    res.json({ dances, collabs, pilates, movements });
   } catch (err) {
     res.status(500).json(err);
   }
