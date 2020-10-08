@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../styles/home.css';
 
 import FeaturedHome from '../components/FeaturedHome';
@@ -12,8 +12,16 @@ export default function Home() {
   const [randomClasses, setRandomClasses] = useState([]);
   const [errMsg, setErrMsg] = useState([]);
 
+  const videoRef = useRef(null);
+
+  const mute = e => {
+    e.preventDefault();
+    e.target.volume = e.target.volume > 0 ? 0 : 0.1;
+  }
+
   useEffect(() => {
     const fetchClasses = async () => {
+      videoRef.current.volume = 0.1;
       try {
         let res = await classService.getRandom(4);
         setRandomClasses(res.classes);
@@ -33,7 +41,7 @@ export default function Home() {
         <h3>Looking for something to do this weekend?</h3>
         <div>
           <h4>Check out our first Collab to Thriller!</h4>
-          <video src="images/video-1602184430.mp4" autoPlay controls />
+          <video onClick={mute} ref={videoRef} src="images/video-1602184430.mp4" autoPlay="true" loop />
         </div>
       </a>
       <h3>Fun Classes for all skill levels!</h3>
