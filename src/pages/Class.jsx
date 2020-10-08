@@ -76,7 +76,7 @@ export default function Class() {
         setSaves(res[2].saves);
         setIsSaved(res[3].myClasses.includes(id));
       } catch (err) {
-        history.push('/');
+        // history.push('/');
       }
     }
     fetchData();
