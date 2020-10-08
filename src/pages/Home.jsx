@@ -28,7 +28,14 @@ export default function Home() {
   return (
     <main className="main-home">
       {/* <FeaturedHome /> */}
-      <a href="/classes/5f7f56f37770250004d8384e"><img className="featured-img" src="images/halloween-collab02.jpeg" alt="" /></a>
+      <a href="/classes/5f7f56f37770250004d8384e">
+        <img className="featured-img" src="images/halloween-collab-blank.jpeg" alt="" />
+        <h3>Looking for something to do this weekend?</h3>
+        <div>
+          <h4>Check out our first Collab to Thriller!</h4>
+          <video src="images/video-1602184430.mp4" autoPlay controls />
+        </div>
+      </a>
       <h3>Fun Classes for all skill levels!</h3>
       <div className="hr" />
       {errMsg && <p className="err-message">{errMsg}</p>}
