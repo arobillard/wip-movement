@@ -24,7 +24,7 @@ export default function FeaturedHome() {
 
   return (
     <div className="featured-container" >
-      <img src="images/halloween-collab.png" alt="" />
+      <img src="images/Looking for something fun to do this weekend_.jpeg" alt="" />
       {/* <div className="featured-card">
         <span className="featured-card-title">{featured.name}</span>
         <p>{featured.description}</p>
