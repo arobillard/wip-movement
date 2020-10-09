@@ -87,7 +87,7 @@
      font-size: 200%;
      align-self: flex-start;
  }
- .featured-card p {
+ .featured-card p { 
      flex: 1;
      display: flex;
      justify-content: center;

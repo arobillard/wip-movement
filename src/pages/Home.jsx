@@ -11,7 +11,7 @@ export default function Home() {
 
   const [randomClasses, setRandomClasses] = useState([]);
   const [errMsg, setErrMsg] = useState([]);
-  const [muted, setMuted] = useState(false);
+  const [muted, setMuted] = useState(true);
 
   const videoRef = useRef(null);
 
@@ -23,13 +23,10 @@ export default function Home() {
 
   useEffect(() => {
     const fetchClasses = async () => {
-      videoRef.current.muted = false;
       videoRef.current.volume = 0.1;
-      videoRef.current.play();
       try {
         let res = await classService.getRandom(4);
         setRandomClasses(res.classes);
-
       } catch (err) {
         setErrMsg(err.message);
       }
@@ -43,7 +40,9 @@ export default function Home() {
       <a href="/classes/5f7f56f37770250004d8384e">
         <img src="images/thriller-01.png" alt="" />
         <div onClick={mute} >
-          <video ref={videoRef} src="images/video-1602184430.mp4" autoPlay loop muted />
+          <video ref={videoRef} autoPlay loop >
+            <source src="images/video-1602184430.mp4" type="video/mp4" />
+          </video>
           <span><i class={`fas ${muted ? 'fa-volume-up' : 'fa-volume-mute'}`}></i></span>
         </div>
         <div className="mobile-mute" onClick={mute}><i class={`fas ${muted ? 'fa-volume-up' : 'fa-volume-mute'}`}></i></div>
