@@ -38,53 +38,37 @@
      padding: 10px 0;
 
      display: flex;
-     flex-direction: column;
-     justify-content: space-between;
+     justify-content: center;
      align-items: center;
 
      text-decoration: none;
      overflow: hidden;
 
-     background-color: #d75406;
+     background-color: #000;
 }
 
 .main-home > a img {
-     position: absolute;
-     top: 0;
-     left: 0;
-     /* height: 100%; */
-     z-index: 0;
+    height: 20vh;
 }
-
 .main-home > a div {
-    width: 85%;
-    height: clamp(10vh, 16vw, 30vh);
-    z-index: 1;
-    display: flex;
-    justify-content: space-between;
-}
-
-.main-home > a h3 {
-    font-family: 'Gloria Hallelujah', cursive;
-    margin: 0;
-    text-align: center;
-    font-size: clamp(.7em, 4vw, 3.2em);
-    color: #111;
-    z-index: 1;
-    width: 100%;
-}
-
-.main-home > a h4 {
-    margin: 0;
-    text-align: center;
-    align-self: center;
-    font-size: 2vw;
-    font-family: 'Gloria Hallelujah', cursive;
-}
-
-.main-home > a video {
+    display: none;
      z-index: 1;
      width: 50%;
+}
+
+.main-home > a .mobile-mute {
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    left: 0;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.main-home > a .mobile-mute i {
+    font-size: 1.5em;
+    color: orange;
 }
 
  .featured-card {
@@ -221,6 +205,46 @@
 
     .main-home > a {
         height: clamp(27vw,260px,40vh);
+    }
+
+    .main-home > a img{
+        height: clamp(27vw,260px,40vh);
+    }
+
+    .main-home > a div:hover span {
+        display: block;
+    }
+
+    .main-home > a div {
+        display: block;
+        height: 90%;
+        position: relative;
+
+        display: flex;
+        justify-content: center;
+    }
+
+    .main-home > a video {
+        height: 100%;
+    }
+
+    .main-home > a span {
+        position: absolute;
+        display: none;
+        top: 50%;
+        left: 50%;
+        margin: -40px 0 0 -40px;
+        font-size: 5em;
+        color: orange;
+        z-index: 3;
+    }
+
+    .main-home > a .mobile-mute {
+        display: none;
+    }
+
+    .main-home > a i {
+        color: orange;
     }
 
      .director-msg img {

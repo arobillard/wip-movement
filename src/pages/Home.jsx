@@ -11,16 +11,19 @@ export default function Home() {
 
   const [randomClasses, setRandomClasses] = useState([]);
   const [errMsg, setErrMsg] = useState([]);
+  const [muted, setMuted] = useState(false);
 
   const videoRef = useRef(null);
 
   const mute = e => {
     e.preventDefault();
-    e.target.volume = e.target.volume > 0 ? 0 : 0.1;
+    videoRef.current.volume = videoRef.current.volume > 0 ? 0 : 0.1;
+    setMuted(!muted);
   }
 
   useEffect(() => {
     const fetchClasses = async () => {
+      videoRef.current.muted = false;
       videoRef.current.volume = 0.1;
       videoRef.current.play();
       try {
@@ -38,12 +41,12 @@ export default function Home() {
     <main className="main-home">
       {/* <FeaturedHome /> */}
       <a href="/classes/5f7f56f37770250004d8384e">
-        <img className="featured-img" src="images/halloween-collab-blank.jpeg" alt="" />
-        <h3>Looking for something to do this weekend?</h3>
-        <div>
-          <h4>Check out our first Collab to Thriller!</h4>
-          <video onClick={mute} ref={videoRef} src="images/video-1602184430.mp4" loop />
+        <img src="images/thriller-01.png" alt="" />
+        <div onClick={mute} >
+          <video ref={videoRef} src="images/video-1602184430.mp4" autoPlay loop muted />
+          <span><i class={`fas ${muted ? 'fa-volume-up' : 'fa-volume-mute'}`}></i></span>
         </div>
+        <div className="mobile-mute" onClick={mute}><i class={`fas ${muted ? 'fa-volume-up' : 'fa-volume-mute'}`}></i></div>
       </a>
       <h3>Fun Classes for all skill levels!</h3>
       <div className="hr" />
