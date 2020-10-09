@@ -11,7 +11,7 @@ export default function Home() {
 
   const [randomClasses, setRandomClasses] = useState([]);
   const [errMsg, setErrMsg] = useState([]);
-  const [muted, setMuted] = useState(true);
+  const [muted, setMuted] = useState(false);
 
   const videoRef = useRef(null);
 
