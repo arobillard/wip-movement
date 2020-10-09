@@ -40,12 +40,12 @@ export default function Home() {
       <a href="/classes/5f7f56f37770250004d8384e">
         <img src="images/thriller-01.png" alt="" />
         <div onClick={mute} >
-          <video ref={videoRef} autoPlay loop >
+          <video ref={videoRef} autoPlay loop mute >
             <source src="images/video-1602184430.mp4" type="video/mp4" />
           </video>
-          <span><i class={`fas ${muted ? 'fa-volume-up' : 'fa-volume-mute'}`}></i></span>
+          {/* <span><i class={`fas ${muted ? 'fa-volume-up' : 'fa-volume-mute'}`}></i></span> */}
         </div>
-        <div className="mobile-mute" onClick={mute}><i class={`fas ${muted ? 'fa-volume-up' : 'fa-volume-mute'}`}></i></div>
+        {/* <div className="mobile-mute" onClick={mute}><i class={`fas ${muted ? 'fa-volume-up' : 'fa-volume-mute'}`}></i></div> */}
       </a>
       <h3>Fun Classes for all skill levels!</h3>
       <div className="hr" />
