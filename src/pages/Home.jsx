@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <main className="main-home">
       {/* <FeaturedHome /> */}
-      <a href="" className="insta">
+      <a href="https://www.instagram.com/worksinprogressmovement/?hl=en" className="insta">
         <img src="/images/oct-banner.png" alt="" />
       </a>
       <a className="thriller" href="/classes/5f7f56f37770250004d8384e">
