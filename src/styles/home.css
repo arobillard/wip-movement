@@ -31,7 +31,17 @@
     width: 100%;
  }
 
- .main-home > a {
+ .main-home .insta {
+     width: 100%;
+     display: flex;
+     justify-content: center;
+ }
+
+ .main-home .insta img {
+     width: 100%;
+ }
+
+ .main-home > a.thriller {
      width: 100%;
      height: 20vh;
      position: relative;
@@ -47,7 +57,7 @@
      background-color: #000;
 }
 
-.main-home > a img {
+.main-home > a.thriller img {
     height: 20vh;
 }
 .main-home > a div {
@@ -203,19 +213,24 @@
 }
  @media only screen and (min-width: 678px) {
 
-    .main-home > a {
+    .main-home > a.insta {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .main-home > a.thriller {
         height: clamp(27vw,260px,40vh);
     }
 
-    .main-home > a img{
+    .main-home > a.thriller img{
         height: clamp(20vw,200px,40vh);
     }
 
-    .main-home > a div:hover span {
+    .main-home > a.thriller div:hover span {
         display: flex;
     }
 
-    .main-home > a div {
+    .main-home > a.thriller div {
         display: block;
         height: clamp(60%, 200px, 90%);
         max-height: 260px;
@@ -226,15 +241,15 @@
         align-items: center;
     }
 
-    .main-home > a video {
+    .main-home > a.thriller video {
         height: 120%;
     }
 
-    .main-home > a .mobile-mute {
+    .main-home > a.thriller .mobile-mute {
         display: none;
     }
 
-    .main-home > a span {
+    .main-home > a.thriller span {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -245,7 +260,7 @@
         display: none;
     }
 
-    .main-home > a i {
+    .main-home > a.thriller i {
         color: orange;
     }
 

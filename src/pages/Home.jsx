@@ -37,7 +37,10 @@ export default function Home() {
   return (
     <main className="main-home">
       {/* <FeaturedHome /> */}
-      <a href="/classes/5f7f56f37770250004d8384e">
+      <a href="" className="insta">
+        <img src="/images/oct-banner.png" alt="" />
+      </a>
+      <a className="thriller" href="/classes/5f7f56f37770250004d8384e">
         <img src="images/thriller-01.png" alt="" />
         <div onClick={mute} >
           <video ref={videoRef} autoPlay loop mute >
