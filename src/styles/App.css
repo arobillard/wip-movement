@@ -125,7 +125,9 @@ footer a.email-us {
   color: var(--dark-blue)
 }
 
-.main-privacy h2, h4, p {
+.main-privacy h2, 
+.main-privacy h4, 
+.main-privacy p {
   text-align: left;
   width: 90%;
 }
