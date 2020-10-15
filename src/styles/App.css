@@ -76,12 +76,12 @@ footer {
   padding: 10px;
 }
 
-footer a:hover {
+footer a.email-us:hover {
   border-radius: 3px 3px 0 0;
   border-bottom: 3px solid #777;
 }
 
-footer a {
+footer a.email-us {
   display: block;
   background-color: var(--white);
   width: 120px;
@@ -113,4 +113,38 @@ footer a {
 
 .margin-20 {
   margin-bottom: 20px;
+}
+
+.main-privacy {
+  width: 100%;
+  max-width: 800px;
+}
+
+.main-privacy h1,
+.main-privacy h2 {
+  color: var(--dark-blue)
+}
+
+.main-privacy h2, h4, p {
+  text-align: left;
+  width: 90%;
+}
+
+.main-privacy p {
+  width: 100%;
+}
+
+.main-privacy h4 {
+  color: var(--orangy)
+}
+
+.main-privacy h1,
+.main-privacy h2,
+.main-privacy h4,
+.main-privacy p {
+  margin-bottom: 20px;
+}
+
+.main-privacy ul {
+  padding-left: 20%;
 }
