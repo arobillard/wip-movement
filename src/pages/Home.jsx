@@ -40,6 +40,12 @@ export default function Home() {
       <a href="https://www.instagram.com/worksinprogressmovement/?hl=en" className="insta">
         <img src="/images/oct-21-banner.png" alt="" />
       </a>
+      <h3>Fun Classes for all skill levels!</h3>
+      <div className="hr" />
+      {errMsg && <p className="err-message">{errMsg}</p>}
+      <ul className="random-list">
+        {randomClasses.map(c => <li key={c._id}><ClassCard cls={c} myKey={c._id} /></li>)}
+      </ul>
       <a className="thriller" href="/classes/5f7f56f37770250004d8384e">
         <img src="images/thriller-01.png" alt="" />
         <div onClick={mute} >
@@ -50,12 +56,6 @@ export default function Home() {
         </div>
         {/* <div className="mobile-mute" onClick={mute}><i class={`fas ${muted ? 'fa-volume-up' : 'fa-volume-mute'}`}></i></div> */}
       </a>
-      <h3>Fun Classes for all skill levels!</h3>
-      <div className="hr" />
-      {errMsg && <p className="err-message">{errMsg}</p>}
-      <ul className="random-list">
-        {randomClasses.map(c => <li key={c._id}><ClassCard cls={c} myKey={c._id} /></li>)}
-      </ul>
       <DirectorMsg />
     </main>
   )
