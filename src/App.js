@@ -61,10 +61,10 @@ export default function App() {
       </header>
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route path='/classes/:id' render={() => (
-          user ? <Class /> : <Redirect to='/login' />)} />
-        <Route path='/search/:search' render={() => (
-          user ? <Search /> : <Redirect to='/login' />)} />
+        <Route path='/classes/:id' render={({ match }) => (
+          user ? <Class /> : <Redirect to={{ pathname: '/login', state: { url: match.url } }} />)} />
+        <Route path='/search/:search' render={({ params }) => (
+          user ? <Search /> : <Redirect to={{ pathname: '/login', state: { url: params } }} />)} />
         <Route path='/user/:id' render={() => (
           user ? <Profile /> : <Redirect to='/login' />)} />
 
