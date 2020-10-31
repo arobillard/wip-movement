@@ -37,7 +37,8 @@ export default function Signup({ handleLogin }) {
 
   return (
     <main className='main-signup'>
-      <h1>Sign Up and Enjoy for Free!</h1>
+      <h1>Sign Up and Enjoy!</h1>
+      <h3>Free for a limited time only</h3>
       <p className="err-message">{errMsg}</p>
       <div className="signup-disclaimer">
         <p>The Works in Progress Movement website contains dance and Pilates classes that can be done in your own home, or environment of your choosing, without the supervision of an instructor. </p>

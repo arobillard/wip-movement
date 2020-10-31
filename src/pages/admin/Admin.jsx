@@ -61,7 +61,7 @@ const AdminList = ({ list, deleteClass }) => {
       {list.map(l => <li key={l._id}>
         <a href={`/classes/${l._id}`}>{l.name}</a>
         <div className="buttons">
-          <a href={`/admin/update-class/${l._id}`}>Update</a>
+          <a href={`/admin/update-class/${l._id}`}>Details</a>
           <button onClick={() => deleteClass(l._id)}>Delete</button>
         </div>
       </li>)}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams, userHistory } from 'react-router-dom';
 import '../styles/classes/class.css';
 
 import ClassCard from '../components/ClassCard';
@@ -13,6 +13,7 @@ import tokenService from '../utils/tokenService';
 export default function Class() {
 
   const { id } = useParams();
+  const history = useHistory();
 
   const [user, setUser] = useState({});
 
@@ -75,7 +76,7 @@ export default function Class() {
         setSaves(res[2].saves);
         setIsSaved(res[3].myClasses.includes(id));
       } catch (err) {
-        console.log(err);
+        // history.push('/');
       }
     }
     fetchData();

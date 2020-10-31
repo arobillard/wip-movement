@@ -15,6 +15,8 @@ export default function Login({ handleLogin }) {
 
   const history = useHistory();
 
+  const redirectUrl = history.location.state ? history.location.state.url : '/';
+
   const handleChange = e => {
     setFormData({
       ...formData,
@@ -27,7 +29,7 @@ export default function Login({ handleLogin }) {
     try {
       await userService.login(formData);
       handleLogin();
-      history.goBack();
+      history.push(redirectUrl);
     } catch (err) {
       setErrMsg(err.message);
     }

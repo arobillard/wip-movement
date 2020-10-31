@@ -73,6 +73,7 @@
 
    display: flex;
    flex-direction: column;
+   justify-content: space-evenly;
 
     position: relative;
     z-index: 1;
@@ -85,18 +86,20 @@
 }
 
 .class-card-container p {
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+}
+
+.class-card-container .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .class-card-container button {
-   position: absolute;
-   bottom: 0;
-   right: 0;
    cursor: pointer;
    
    width: 50%;
    height: 50px;
-   margin-bottom: 8px;
    background-color: var(--tan);
    border: none;
    border-radius: 2px;

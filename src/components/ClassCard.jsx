@@ -19,8 +19,10 @@ export default function ClassCard({ cls }) {
       <div className="class-card-container">
         <h4>{cls.name}</h4>
         <p>With {cls.instructor}</p>
-        <ul className="star-container">{stars}</ul>
-        <button onClick={() => history.push(`/classes/${cls._id}`)}>Check it out</button>
+        <div className="bottom">
+          <ul className="star-container">{stars}</ul>
+          <button onClick={() => history.push(`/classes/${cls._id}`)}>Check it out</button>
+        </div>
       </div>
       <div className="class-card-bg"></div>
     </div>

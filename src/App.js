@@ -18,6 +18,7 @@ import NewClassPage from './pages/admin/NewClassPage';
 import UpdateClassPage from './pages/admin/UpdateClassPage';
 
 import Mobile from './components/Mobile';
+import Privacy from './pages/Privacy';
 
 import userService from './utils/userService';
 import tokenService from './utils/tokenService';
@@ -60,10 +61,10 @@ export default function App() {
       </header>
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route path='/classes/:id' render={() => (
-          user ? <Class /> : <Redirect to='/login' />)} />
-        <Route path='/search/:search' render={() => (
-          user ? <Search /> : <Redirect to='/login' />)} />
+        <Route path='/classes/:id' render={({ match }) => (
+          user ? <Class /> : <Redirect to={{ pathname: '/login', state: { url: match.url } }} />)} />
+        <Route path='/search/:search' render={({ params }) => (
+          user ? <Search /> : <Redirect to={{ pathname: '/login', state: { url: params } }} />)} />
         <Route path='/user/:id' render={() => (
           user ? <Profile /> : <Redirect to='/login' />)} />
 
@@ -85,14 +86,14 @@ export default function App() {
           admin ? <NewClassPage /> : <main><h1 style={{ color: 'red', fontSize: '10vw' }}>ACCES DENIED</h1></main>)} />
         <Route path='/admin/update-class/:id' render={() => (
           admin ? <UpdateClassPage /> : <main><h1 style={{ color: 'red', fontSize: '10vw' }}>ACCES DENIED</h1></main>)} />
-
+        <Route path='/privacy-policy' component={Privacy} />
         <Route path='/*' render={() => <main className="not-found">404 Page not Found</main>} />
       </Switch>
-      <Mobile user={user} />
+      <Mobile user={user} admin={admin()} />
       <footer>
         <p>Have any questions or concerns? Send us an email and we'll get back to you as soon as possible!</p>
-        <a href="mailto:worksinprogressmovement@gmail.com?subject=URGENT FROM SITE" target="_blank" rel="noopener noreferrer">EMAIL US</a>
-        <p>&copy; Tim Robillard 2020</p>
+        <a className="email-us" href="mailto:worksinprogressmovement@gmail.com?subject=URGENT FROM SITE" target="_blank" rel="noopener noreferrer">EMAIL US</a>
+        <p>&copy; Tim Robillard 2020 <a href='/privacy-policy'>Privacy Policy</a></p>
       </footer>
     </BrowserRouter>
   )

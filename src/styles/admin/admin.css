@@ -2,12 +2,13 @@
     list-style: none;
     border: 2px solid #333;
     border-radius: 3px;
-    width: 60%;
+    width: 100%;
     margin: 10px;
     padding: 20px;
 }
 
 .main-admin li {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     margin: 10px 0;
@@ -16,11 +17,14 @@
 .main-admin li a {
     text-decoration: none;
     font-size: 1.5em;
+    flex: 1;
+    display: flex;
+    align-items: center;
 }
 
 .main-admin li .buttons {
-    width: 150px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
@@ -50,4 +54,15 @@
 
 .main-admin li .buttons a {
     font-size: 1.2em;
+}
+
+@media only screen and (min-width: 678px) {
+    .main-admin ul {
+        width: 60%;
+    }
+
+    .main-admin li .buttons {
+        flex-direction: row;
+        width: 150px;
+    }
 }
